@@ -23,7 +23,7 @@
 
 
 *******************************************************************************
-Ephemeris / WWW_USER Sun May  7 16:21:47 2023 Pasadena, USA      / Horizons    
+Ephemeris / WWW_USER Sun May  7 16:36:51 2023 Pasadena, USA      / Horizons    
 *******************************************************************************
 Target body name: Venus (299)                     {source: DE441}
 Center body name: Sun (10)                        {source: DE441}
@@ -54,14 +54,14 @@ Table cut-offs 1: Elevation (-90.0deg=NO ),Airmass     n.a.    , Daylight (NO )
 Table cut-offs 2: Solar elongation (  0.0,180.0=NO ),Local Hour Angle( 0.0=NO )
 Table cut-offs 3: RA/DEC angular rate (     0.0=NO )                           
 Table format    : Comma Separated Values (spreadsheet)
-******************************************************************************************************************************************************************************************************************
- Date__(UT)__HR:MN, , , R.A._(ICRF), DEC__(ICRF),  R.A.__(a-app), DEC_(a-app),    APmag,  S-brt,             delta,     deldot,     S-O-T,/r,     S-T-O,  Sky_motion, Sky_mot_PA, RelVel-ANG, Lun_Sky_Brt  sky_SNR
-******************************************************************************************************************************************************************************************************************
+*******************************************************************************
+ Date__(UT)__HR:MN, , ,            delta,     deldot,
+*****************************************************
 $$SOE
- 2023-May-06 00:00, , , 10 57 39.75, +10 18 31.3,    10 46 17.49, -03 50 54.2,   -5.815,  0.750,  0.71937054281640, -1.6402209,   86.2799,/L,    0.3766,   4.0659014,  90.439890,  -2.656188,        n.a.     n.a.
- 2023-May-07 00:00, , , 11 03 43.55, +09 41 11.0,    10 52 46.48, -03 51 33.6,   -5.821,  0.747,  0.71842579315625, -1.6172974,   98.8149,/L,    0.3729,   4.0206202,  90.333919,  -2.652174,        n.a.     n.a.
+ 2023-May-06 00:00, , , 0.71937054281640, -1.6402209,
+ 2023-May-07 00:00, , , 0.71842579315625, -1.6172974,
 $$EOE
-******************************************************************************************************************************************************************************************************************
+*******************************************************************************
 Column meaning:
  
 TIME
@@ -115,125 +115,11 @@ presence symbol.
 planet/satellite system, potentially compromising visual observations due to
 its brightness. Any such body is identified in the print-out header.
  
- 'R.A._(ICRF), DEC__(ICRF),' =
-  Astrometric right ascension and declination of the target center with
-respect to the observing site (coordinate origin) in the reference frame of
-the planetary ephemeris (ICRF). Compensated for down-leg light-time delay
-aberration.
-
-  Units: RA  in hours-minutes-seconds of time,    HH MM SS.ff{ffff}
-         DEC in degrees-minutes-seconds of arc,  sDD MN SC.f{ffff}
- 
- 'R.A.__(a-app), DEC_(a-app),' =
-  Airless apparent right ascension and declination of the target center with
-respect to the center/site body's IAU 2009 equator (z-axis) and the meridian
-containing ICRF x-axis. Compensated for light-time, the gravitational
-deflection of light, stellar aberration, and IAU spin axis.
-
-  Units: RA  in hours-minutes-seconds of time,    HH MM SS.ff{ffff}
-         DEC in degrees-minutes-seconds of arc,  sDD MN SC.f{ffff}
- 
- 'APmag,  S-brt,' =
-  The targets' approximate apparent visual magnitude and surface brightness.
-For planets and natural satellites, output is restricted to solar phase angles
-covered by observational data. Outside the observed phase angle range, "n.a."
-may be output to avoid extrapolation beyond the limit of model validity.
-
-   For Earth-based observers, the estimated dimming due to atmospheric
-absorption (extinction) is available as a separate, requestable quantity.
-
-   Surface brightness is the average airless visual magnitude of a
-square-arcsecond of the illuminated portion of the apparent disk. It is
-computed only if the target radius is known.
-
-   Units: MAGNITUDES & MAGNITUDES PER SQUARE ARCSECOND
- 
  'delta,     deldot,' =
    Apparent range ("delta", light-time aberrated) and range-rate ("delta-dot")
 of the target center relative to the observer. A positive "deldot" means the
 target center is moving away from the observer, negative indicates movement
 toward the observer.  Units: AU and KM/S
- 
- 'S-O-T,/r,' =
-   Sun-Observer-Target apparent SOLAR ELONGATION ANGLE seen from the observers'
-location at print-time.
-
-   The '/r' column provides a code indicating the targets' apparent position
-relative to the Sun in the observers' sky, as described below:
-
-   Case A: For an observing location on the surface of a rotating body, that
-body rotational sense is considered:
-
-    /T indicates target TRAILS Sun   (evening sky: rises and sets AFTER Sun)
-    /L indicates target LEADS Sun    (morning sky: rises and sets BEFORE Sun)
-
-   Case B: For an observing point that does not have a rotational model (such
-as a spacecraft), the "leading" and "trailing" condition is defined by the
-observers' heliocentric ORBITAL motion:
-
-    * If continuing in the observers' current direction of heliocentric
-       motion would encounter the targets' apparent longitude first, followed
-       by the Sun's, the target LEADS the Sun as seen by the observer.
-
-    * If the Sun's apparent longitude would be encountered first, followed
-       by the targets', the target TRAILS the Sun.
-
-   Two other codes can be output:
-    /* indicates observer is Sun-centered    (undefined)
-    /? Target is aligned with Sun center     (no lead or trail)
-
-   The S-O-T solar elongation angle is numerically the minimum separation
-angle of the Sun and target in the sky in any direction. It does NOT indicate
-the amount of separation in the leading or trailing directions, which would
-be defined along the equator of a spherical coordinate system.
-
-   Units: DEGREES
- 
- 'S-T-O,' =
-   The Sun-Target-Observer angle; the interior vertex angle at target center
-formed by a vector from the target to the apparent center of the Sun (at
-reflection time on the target) and the apparent vector from target to the
-observer at print-time. Slightly different from true PHASE ANGLE (requestable
-separately) at the few arcsecond level in that it includes stellar aberration
-on the down-leg from target to observer.  Units: DEGREES
- 
- 'Sky_motion, Sky_mot_PA, RelVel-ANG,' =
-  Total apparent angular rate of the target in the plane-of-sky. "Sky_mot_PA"
-is the position angle of the target's direction of motion in the plane-of-sky,
-measured counter-clockwise from the apparent of-date north pole direction.
-"RelVel-ANG" is the flight path angle of the target's relative motion with
-respect to the observer's line-of-sight, in the range [-90,+90], where positive
-values indicate motion away from the observer, negative values are toward the
-observer:
-
-  -90 = target is moving directly toward the observer
-    0 = target is moving at right angles to the observer's line-of-sight
-  +90 = target is moving directly away from the observer
-
-UNITS:  ARCSECONDS/MINUTE, DEGREES, DEGREES
- 
- 'Lun_Sky_Brt  sky_SNR' =
-  Sky brightness due to moonlight scattered by Earth's atmosphere at the
-target's position in the sky. "sky_SNR" is the visual signal-to-noise ratio
-(SNR) of the target's surface brightness relative to background sky. Output
-only for topocentric Earth observers when both the Moon and target are above
-the local horizon and the Sun is in astronomical twilight (or further) below
-the horizon, and the target is not the Moon or Sun. If all conditions are
-not met, "n.a." is output. Galactic brightness, local sky light-pollution
-and weather are NOT considered. Lunar opposition surge is considered. The
-value returned is accurate under ideal conditions at the approximately 8-23%
-level, so is a useful but not definitive value.
-
-  If the target-body radius is also known, "sky_SNR" is output. This is the
-approximate visual signal-to-noise ratio of the target's brightness divided
-by lunar sky brightness. When sky_SNR < 1, the target is dimmer than the
-ideal moonlight-scattering background sky, so unlikely to be detectable at
-visual wavelengths. In practice, visibility requires sky_SNR > 1 and a
-detector sensitive enough to reach the target's magnitude, even if it isn't
-washed out by moonlight. When relating magnitudes and brightness values,
-keep in mind their logarithmic relationship m2-m1 = -2.5*log_10(b2/b1).
-
-  UNITS: VISUAL MAGNITUDES / ARCSECOND^2, and unitless ratio
 
 Computations by ...
 
@@ -252,4 +138,4 @@ Computations by ...
                   scripts        https://ssd.jpl.nasa.gov/ftp/ssd/SCRIPTS
     Author      : Jon.D.Giorgini@jpl.nasa.gov
 
-******************************************************************************************************************************************************************************************************************
+*******************************************************************************
